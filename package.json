@@ -1,6 +1,6 @@
 {
   "name": "cheese-tracker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "CHZZK donation event tracker",
@@ -22,7 +22,8 @@
       {
         "provider": "github",
         "owner": "sys0423",
-        "repo": "cheese-tracker"
+        "repo": "cheese-tracker",
+        "releaseType": "release"
       }
     ],
     "files": [
