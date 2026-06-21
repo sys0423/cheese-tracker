@@ -1,0 +1,19 @@
+치즈 추적 사용법
+
+1. run.bat을 실행합니다.
+2. 브라우저에서 http://localhost:5177 을 엽니다.
+3. Client ID, Client Secret, Redirect URI를 입력하고 설정 저장을 누릅니다.
+4. 치지직 로그인을 누르고 스트리머 계정으로 승인합니다.
+5. 방송 전에 후원 수집 시작을 누릅니다.
+
+Redirect URI
+
+http://localhost:5177/oauth/callback
+
+주의
+
+- 서버 창을 닫으면 수집이 멈춥니다.
+- data 폴더는 로그인 정보와 후원 기록이 저장되는 폴더입니다.
+- data 폴더와 Client Secret은 다른 사람에게 공유하지 마세요.
+- 누적 기록을 백업하려면 data 폴더를 통째로 복사하세요.
+- CSV 내보내기 버튼으로 후원 기록을 따로 저장할 수 있습니다.

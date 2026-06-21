@@ -1,0 +1,52 @@
+{
+  "name": "cheese-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CHZZK donation event tracker",
+  "author": "sys0423",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "dist:win": "electron-builder --win nsis --x64"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "build": {
+    "appId": "com.cheesetracker.app",
+    "productName": "Cheese Tracker",
+    "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "sys0423",
+        "repo": "cheese-tracker"
+      }
+    ],
+    "files": [
+      "server.js",
+      "public/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Cheese-Tracker-Setup-${version}.exe"
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "^37.2.5",
+    "electron-builder": "^26.0.12"
+  }
+}

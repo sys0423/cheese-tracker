@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cheese Tracker for &#55176;&#50836;&#47532;&#48120;</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/vendor/socket.io.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <nav class="topBar" aria-label="Main navigation">
+        <div class="topControls">
+          <div class="tabs" role="tablist">
+            <button type="button" class="tabButton active" data-view-target="dashboardView">&#45824;&#49884;&#48372;&#46300;</button>
+            <button type="button" class="tabButton" data-view-target="setupView">&#49444;&#51221;</button>
+          </div>
+          <label class="themeSwitch" title="Dark / Light">
+            <input id="themeToggle" type="checkbox">
+            <span class="switchTrack"><span class="switchKnob"></span></span>
+            <span class="switchText">&#46972;&#51060;&#53944;</span>
+          </label>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div class="heroText">
+          <p class="eyebrow">CHZZK donation logger</p>
+          <h1>Cheese Tracker <span>for &#55176;&#50836;&#47532;&#48120;</span></h1>
+          <p class="heroCopy">&#54980;&#50896;&#51088;&#48324; &#45572;&#51201; &#44552;&#50529;&#51012; &#44636;&#45140;&#54616;&#44172; &#44592;&#47197;&#54633;&#45768;&#45796;.</p>
+        </div>
+        <div class="heroBadge">
+          <span>&#49345;&#53468;</span>
+          <strong id="status">&#49884;&#51089; &#51456;&#48708;</strong>
+        </div>
+      </section>
+
+      <section id="dashboardView" class="view active">
+        <section class="metrics">
+          <div class="metric total"><span>&#52509; &#54980;&#50896;</span><strong id="totalAmount">0&#50896;</strong></div>
+          <div class="metric"><span>&#54980;&#50896; &#44148;&#49688;</span><strong id="donationCount">0</strong></div>
+          <div class="metric"><span>&#54980;&#50896;&#51088; &#49688;</span><strong id="donorCount">0</strong></div>
+        </section>
+
+        <section class="dashboardActions">
+          <a class="button darkAction" href="/api/export.csv">CSV &#45236;&#48372;&#45236;&#44592;</a>
+          <button type="button" class="ghostAction" data-view-target="setupView">&#49444;&#51221; &#50676;&#44592;</button>
+        </section>
+
+        <section class="grid data">
+          <section class="panel">
+            <div class="sectionTitle">
+              <span>TOP</span>
+              <h2>&#54980;&#50896;&#51088; &#54633;&#44228;</h2>
+            </div>
+            <div class="tableWrap">
+              <table>
+                <thead><tr><th>&#45769;&#45348;&#51076;</th><th>&#54943;&#49688;</th><th>&#44552;&#50529;</th><th>&#52572;&#44540;</th></tr></thead>
+                <tbody id="topDonors"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="sectionTitle">
+              <span>NEW</span>
+              <h2>&#52572;&#44540; &#54980;&#50896;</h2>
+            </div>
+            <div class="tableWrap">
+              <table>
+                <thead><tr><th>&#49884;&#44036;</th><th>&#45769;&#45348;&#51076;</th><th>&#44552;&#50529;</th><th>&#47700;&#49884;&#51648;</th></tr></thead>
+                <tbody id="recentDonations"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section id="setupView" class="view" hidden>
+        <section class="grid setupGrid">
+          <form class="panel settings" id="settingsForm">
+            <div class="sectionTitle">
+              <span>01</span>
+              <h2>&#50672;&#46041; &#49444;&#51221;</h2>
+            </div>
+            <label>
+              Client ID
+              <input id="clientId" name="clientId" autocomplete="off" placeholder="CHZZK Developers Client ID">
+            </label>
+            <label>
+              Client Secret
+              <input id="clientSecret" name="clientSecret" type="password" autocomplete="off" placeholder="data/config.json&#50640; &#47196;&#52972; &#51200;&#51109;&#46121;&#45768;&#45796;">
+            </label>
+            <label>
+              Redirect URI
+              <input id="redirectUri" name="redirectUri" autocomplete="off">
+            </label>
+            <div class="actions">
+              <button type="submit">&#49444;&#51221; &#51200;&#51109;</button>
+              <button type="button" id="loginButton" class="secondaryAction">&#52824;&#51648;&#51649; &#47196;&#44536;&#51064;</button>
+            </div>
+            <p class="hint">&#52824;&#51648;&#51649; Developers&#50640; &#46321;&#47197;&#54624; Redirect URI: http://localhost:5177/oauth/callback</p>
+          </form>
+
+          <section class="panel controls">
+            <div class="sectionTitle">
+              <span>02</span>
+              <h2>&#49688;&#51665;</h2>
+            </div>
+            <div class="actions stacked">
+              <button type="button" id="connectButton" class="primaryAction">&#54980;&#50896; &#49688;&#51665; &#49884;&#51089;</button>
+              <button type="button" id="testButton" class="ghostAction">&#53580;&#49828;&#53944; &#44592;&#47197; &#52628;&#44032;</button>
+              <button type="button" class="darkAction" data-view-target="dashboardView">&#45824;&#49884;&#48372;&#46300;&#47196; &#46028;&#50500;&#44032;&#44592;</button>
+            </div>
+            <div class="log" id="log"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+data/
+dist/
+node_modules/
+.pnpm-store/
+*.zip
+*.log
+cheese-tracker/
+cheese-tracker-*/
+*.log
